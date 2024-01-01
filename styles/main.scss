@@ -1,0 +1,128 @@
+:root {
+    --100vw: 100vw;
+}
+@font-face {
+    font-family: NB;
+    src: url("/assets/fonts/NBInternationalProBoo.woff2") format("woff2");
+}
+@font-face {
+    font-family: RJ;
+    src: url("/assets/fonts/Rejouice-Headline.woff2") format("woff2");
+}
+*,
+*::before,
+*::after {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizelegibility;
+}
+body {
+    min-height: 100%;
+    font-family: NB, system-ui, sans-serif;
+    background: #faf8f3;
+    overflow-x: clip;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+button {
+    all: unset;
+    cursor: pointer;
+}
+.g-header {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    justify-content: space-between;
+    padding: calc(40 * calc(var(--100vw) / 1440));
+    a[aria-label="back to home"] {
+        color: white;
+        position: relative;
+    }
+    .d-font {
+        font-size: calc(20 * calc(var(--100vw) / 1440));
+    }
+    #s-logo {
+        font-family: RJ;
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        left: 0;
+    }
+    #burger-menu {
+        color: white;
+        &::after {
+            content: "";
+            display: block;
+            height: 1px;
+            background-color: currentColor;
+            width: 100%;
+            scale: 0 1;
+            transform-origin: right;
+            transition: 0.2s scale linear;
+        }
+        &:hover::after {
+            scale: 1;
+            transform-origin: left;
+        }
+    }
+}
+main {
+    section {
+        &.hero-sec {
+            position: relative;
+            overflow-y: clip;
+            display: grid;
+            grid-template-areas: "common";
+            min-height: 100vh;
+            .heading-wrapper {
+                padding: calc(40 * calc(var(--100vw) / 1440));
+                grid-area: common;
+                align-self: end;
+                h1 {
+                    font-size: 26.3vw;
+                    color: white;
+                    font-family: RJ; 
+                    line-height: 0.6;
+                    overflow-y: clip;
+                }
+            }
+            video {
+                grid-area: common;
+                display: block;
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+            #pointerFollower {
+                width: 6.75rem;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                background-color: #ff5f38;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                user-select: none;
+                pointer-events: none;
+                translate: -50% -50%;
+                will-change: transform;
+                scale: 0;
+                transition: transform 0.15s linear, scale 0.15s linear;
+            }
+        }
+        &.about-us {
+            min-height: 110vh;
+        }
+    }
+}
